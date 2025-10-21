@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zidhan Tengku Wilandra</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/CD/YI0K4p/D6QG7ZkQoE63c1zQd1c5oG4kC1qU+k5wV+l8g5G5B7Q5/Lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* CSS DARI KODE ASLI ANDA */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        /* --- ANIMASI BACKGROUND SUBTLE (TETAP) --- */
+        @keyframes subtleMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 50% 50%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0D1117;
+            background-image: 
+                /* Base Gradients */
+                radial-gradient(at 0% 0%, hsla(217, 89%, 15%, 0.3) 0px, transparent 50%),
+                radial-gradient(at 98% 98%, hsla(240, 60%, 15%, 0.3) 0px, transparent 50%);
+            background-attachment: fixed;
+            background-size: 150% 150%; 
+            animation: subtleMove 45s ease-in-out infinite alternate; 
+            color: #e0e0e0;
+            overflow-x: hidden;
+            font-size: 14px;
+        }
+        /* --- END ANIMASI BACKGROUND SUBTLE --- */
+
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1.5rem 4rem; z-index: 1000; display: flex;
+            justify-content: space-between; align-items: center;
+            background: rgba(13, 17, 23, 0.7);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.3s ease;
+        }
+        .logo { font-size: 16px; font-weight: 600; color: #4A90E2; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: #aaa; text-decoration: none; font-size: 15px;
+            text-transform: uppercase; transition: color 0.3s ease;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #4A90E2; }
+        section { padding: 8rem 4rem; }
+        .section-header { text-align: center; margin-bottom: 5rem; }
+        .section-header h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 400;
+            color: #888; display: inline-block;
+            border-bottom: 2px solid #4A90E2; padding-bottom: 0.5rem;
+        }
+        .section-header h2 .symbol { color: #4A90E2; font-weight: 600; }
+        
+        /* MODIFIKASI LAYOUT HERO: MENJADI CENTER ALIGNED (SEPERTI CONTOH) */
+        .hero {
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center;
+            justify-content: center; /* PENTING: Pusatkan konten secara horizontal */
+            text-align: center; /* PENTING: Pusatkan teks */
+            position: relative; 
+            background: transparent;
+            padding-left: 0; /* Hapus padding kiri lama */
+        }
+        .hero-content {
+            max-width: 900px; /* Lebar lebih besar untuk judul */
+            padding-top: 2rem; /* Sedikit padding tambahan */
+        }
+
+        /* FONT BARU: BESAR, BOLD, ESTETIK */
+        .hero-content .intro {
+            font-size: 1rem; 
+            color: #aaa; 
+            margin-bottom: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: 400;
+        }
+        .hero-content h1 {
+            /* Ukuran huruf sangat besar, meniru contoh desain */
+            font-size: clamp(3rem, 10vw, 6rem); 
+            font-weight: 700; 
+            line-height: 1.1; 
+            margin-bottom: 0.5rem; /* Kurangi margin antar nama */
+            text-transform: none; 
+        }
+        .hero-content h1 .highlight { 
+            color: #4A90E2; 
+            font-weight: 700; 
+        }
+        .hero-tagline {
+            /* Tagline dibuat rapi dan tidak terlalu tebal */
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem); 
+            font-weight: 300;
+            color: #b0b0b0; 
+            margin-top: 1.5rem; /* Jarak dari nama */
+            margin-bottom: 3rem; 
+            max-width: 600px;
+            margin-left: auto; /* Pusatkan tagline */
+            margin-right: auto; /* Pusatkan tagline */
+        }
+        /* END MODIFIKASI FONT HERO */
+
+
+        /* --- ANIMASI TEKS HERO (DIREKONFIGURASI UNTUK TAMPILAN BARU) --- */
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-text {
+            opacity: 0;
+            display: block; 
+            animation: slideUp 0.8s forwards;
+        }
+        
+        /* Mengontrol delay untuk animasi berurutan */
+        .hero-content .intro {
+            animation-delay: 0.2s;
+        }
+        .hero-content h1 .animate-text:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+        .hero-content h1 .animate-text:nth-child(2) {
+            animation-delay: 0.8s;
+        }
+        .hero-content .hero-tagline {
+            animation-delay: 1.1s;
+        }
+        /* --- END ANIMASI TEKS HERO BARU --- */
+
+        .about { max-width: 1200px; margin: 0 auto; }
+        .about-content {
+            display: grid; grid-template-columns: 1fr 1.5fr;
+            align-items: center; gap: 5rem;
+        }
+        .profile-image {
+            width: 300px; height: 380px; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease; filter: grayscale(100%);
+            /* ASUMSI GAMBAR PROFIL ada di sini */
+            background: url('foto_ateng.png') no-repeat center center; 
+            background-size: cover; justify-self: center;
+        }
+        .profile-image:hover {
+            filter: grayscale(0%); transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.2);
+        }
+        .about-text p {
+            font-size: 16px; line-height: 1.8; color: #e0e0e0;
+            font-weight: 300; max-width: 60ch; margin-bottom: 1.5rem;
+        }
+        .download-btn {
+            display: inline-block; padding: 12px 24px;
+            border: 1px solid #333; color: #888;
+            text-decoration: none; font-size: 14px;
+            transition: all 0.3s ease; background: transparent; margin-top: 1rem;
+        }
+        .download-btn:hover { border-color: #4A90E2; color: #4A90E2; }
+        .project-filters {
+            display: flex; justify-content: center;
+            flex-wrap: wrap; gap: 1rem; margin-bottom: 3rem;
+        }
+        .filter-btn {
+            font-family: 'JetBrains Mono', monospace; background: transparent;
+            border: 1px solid #333; color: #888;
+            padding: 0.5rem 1.5rem; font-size: 0.9rem;
+            cursor: pointer; border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover { color: #ffffff; border-color: #4A90E2; }
+        .filter-btn.active {
+            background: #4A90E2; color: #0a0a0f;
+            font-weight: 700; border-color: #4A90E2;
+        }
+        .projects-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem; max-width: 1200px; margin: 0 auto;
+        }
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px; overflow: hidden; display: flex;
+            flex-direction: column; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer; 
+        }
+        .project-card.hide { transform: scale(0.95); opacity: 0; }
+        .project-card:hover {
+            transform: translateY(-10px);
+            background: rgba(74, 144, 226, 0.05);
+            border-color: rgba(74, 144, 226, 0.5);
+            box-shadow: 0 0 25px rgba(74, 144, 226, 0.2);
+        }
+        .project-image { width: 100%; height: 220px; overflow: hidden; }
+        .project-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .project-card:hover .project-image img { transform: scale(1.1); }
+        .project-info { padding: 1.5rem; flex-grow: 1; }
+        .project-info h3 {
+            color: #4A90E2; font-size: 1.2rem; font-weight: 500; margin-bottom: 0.5rem;
+        }
+        .project-tech {
+            color: #888; font-size: 0.8rem; margin-bottom: 1rem; font-style: italic;
+        }
+        .project-info p { color: #B0B0B0; line-height: 1.6; font-weight: 300; }
+        
+        /* STYLING SERTIFIKAT */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; max-width: 1200px; margin: 0 auto;
+        }
+        .certificate-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px; overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex; flex-direction: column;
+        }
+        .certificate-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(74, 144, 226, 0.2);
+            border-color: rgba(74, 144, 226, 0.5);
+        }
+        .certificate-image { overflow: hidden; aspect-ratio: 16 / 9; }
+        .certificate-card img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease; cursor: pointer;
+        }
+        .certificate-card:hover img { transform: scale(1.1); }
+        .certificate-info {
+            padding: 1rem; text-align: center;
+            background-color: rgba(255, 255, 255, 0.03);
+            flex-grow: 1; display: flex; flex-direction: column; justify-content: center;
+        }
+        .certificate-info h4 {
+            font-size: 0.9rem; font-weight: 500;
+            color: #e0e0e0; margin-bottom: 0.25rem;
+        }
+        .certificate-info p { font-size: 0.8rem; color: #888; }
+
+        /* MODIFIKASI RESUME LAYOUT (2 Kolom) */
+        .resume-content {
+            display: grid; 
+            grid-template-columns: 1fr 2fr; 
+            gap: 3rem; 
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
+        .resume-left {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem; backdrop-filter: blur(10px); 
+            height: fit-content;
+        }
+        .resume-projects {
+            display: none !important; 
+        }
+        .resume-main-content {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem; backdrop-filter: blur(10px);
+            grid-column: 2 / 3; 
+        }
+        .resume-profile-section {
+            text-align: center; margin-bottom: 2rem; padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .resume-profile-section h3 {
+            font-weight: 500; font-size: 1.2rem;
+            margin-bottom: 0.5rem; color: #ffffff;
+        }
+        .resume-tag {
+            background: linear-gradient(135deg, #4A90E2, #2C5AA0);
+            color: #ffffff; padding: 4px 12px; border-radius: 15px;
+            font-size: 0.8rem; font-weight: 400; letter-spacing: 0.5px;
+        }
+        .contact-info, .skills-section-resume { margin-bottom: 2rem; }
+        .contact-info h4, .skills-section-resume h4 {
+            color: #4A90E2; margin-bottom: 0.5rem;
+            font-weight: 500; font-size: 0.9rem;
+        }
+        .contact-info p {
+            font-weight: 300; font-size: 0.9rem;
+            color: #B0B0B0; margin-bottom: 1rem;
+        }
+        
+        /* MODIFIKASI WARNA LINKEDIN */
+        .contact-info a.contact-link { 
+            color: #e0e0e0; 
+            text-decoration: none; 
+            transition: color 0.3s;
+            font-weight: 300; 
+            font-size: 0.9rem; 
+        }
+        .contact-info a.contact-link:hover { 
+            color: #4A90E2; 
+            text-decoration: underline; 
+        }
+        /* END MODIFIKASI LINKEDIN */
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .skill-tag {
+            background: rgba(74, 144, 226, 0.1);
+            border: 1px solid rgba(74, 144, 226, 0.3);
+            color: #4A90E2; padding: 4px 8px; border-radius: 15px;
+            font-size: 0.7rem; font-weight: 300;
+        }
+        .resume-section { margin-bottom: 2.5rem; }
+        .resume-section h3 {
+            color: #4A90E2; margin-bottom: 1.5rem;
+            font-size: 1.3rem; font-weight: 500;
+            border-bottom: 1px solid rgba(74, 144, 226, 0.2); 
+            padding-bottom: 0.5rem;
+        }
+        .resume-section p { font-weight: 300; color: #B0B0B0; line-height: 1.7; }
+        .experience-item, .education-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid #4A90E2; padding: 1.5rem; margin-bottom: 1.5rem; 
+        }
+        .experience-item h4, .education-item h4 {
+            font-weight: 500; font-size: 1.1rem; margin-bottom: 0.5rem; color: #ffffff;
+        }
+        .experience-item p, .education-item p {
+            font-weight: 300; color: #A0A0A0; font-size: 0.9rem;
+        }
+        footer {
+            text-align: center; padding: 2rem; margin-top: 4rem;
+            color: #888; border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* CSS Transisi & Halaman Detail Proyek */
+        #main-portfolio-sections, #project-detail, #cv-viewer { 
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1; 
+        }
+
+        #main-portfolio-sections.fade-out, #project-detail.fade-out, #cv-viewer.fade-out { 
+            opacity: 0 !important;
+        }
+        #project-detail {
+            display: none; 
+            padding-top: 8rem;
+            min-height: 100vh;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* NEW: CV VIEWER PAGE STYLE */
+        #cv-viewer {
+            display: none;
+            padding-top: 8rem;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .cv-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0 4rem; 
+            max-width: 1000px;
+            margin: 0 auto 1rem auto;
+        }
+        .cv-iframe-container {
+            width: 100%;
+            height: 80vh; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #1a1a2b;
+        }
+        .cv-iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .download-btn-cv {
+            display: inline-block; padding: 10px 20px;
+            background: #4A90E2; color: #0D1117;
+            text-decoration: none; border-radius: 5px;
+            font-weight: 700;
+            margin-left: 1rem;
+        }
+        .download-btn-cv:hover { background: #3c78c0; }
+
+        .back-button-cv {
+            display: inline-block; padding: 10px 20px;
+            background: transparent; color: #888;
+            text-decoration: none; border-radius: 5px;
+            font-weight: 700;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        .back-button-cv:hover { border-color: #4A90E2; color: #4A90E2; }
+        
+        /* Project Detail Styles (TETAP) */
+        .detail-header { text-align: left; margin-bottom: 2rem; }
+        .detail-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem); color: #4A90E2; margin-bottom: 0.5rem;
+        }
+        .detail-header p { color: #888; font-size: 1rem; font-style: italic; }
+        .detail-meta { margin-bottom: 2rem; color: #B0B0B0; font-size: 0.9rem; }
+        .detail-meta span { margin-right: 1.5rem; }
+        .detail-image-container {
+            width: 100%; height: 400px; background-color: #1a1a2b;
+            margin-bottom: 2rem; border-radius: 8px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .detail-image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .detail-content h2 { color: #fff; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.5rem; }
+        .detail-content p, .detail-content ul { color: #e0e0e0; line-height: 1.8; margin-bottom: 1.5rem; font-weight: 300; }
+        .detail-content ul { padding-left: 20px; }
+        .back-button {
+            display: inline-block; padding: 10px 20px;
+            background: #4A90E2; color: #0D1117;
+            text-decoration: none; border-radius: 5px;
+            margin-top: 3rem; margin-bottom: 3rem;
+            transition: background 0.3s ease;
+            font-weight: 700;
+        }
+        .back-button:hover { background: #3c78c0; }
+
+        /* --- MODAL SERTIFIKAT CSS (TETAP) --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            padding-top: 60px;
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9); 
+            opacity: 0; 
+            transition: opacity 0.3s ease-in-out; 
+            pointer-events: none; 
+        }
+        .modal.open { 
+            display: block; 
+            opacity: 1; 
+            pointer-events: auto; 
+        }
+        .modal-content {
+            margin: auto; 
+            display: block; 
+            width: 80%; 
+            max-width: 900px;
+            max-height: 90%; 
+            object-fit: contain; 
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(74, 144, 226, 0.3);
+            transform: scale(0.8); 
+            transition: transform 0.3s ease-in-out; 
+        }
+        .modal.open .modal-content { 
+            transform: scale(1); 
+        }
+        .close-button {
+            position: absolute; top: 15px; right: 35px; color: #f1f1f1;
+            font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer;
+        }
+        .close-button:hover, .close-button:focus { color: #4A90E2; text-decoration: none; }
+        .modal-caption {
+            margin: auto; display: block; width: 80%; max-width: 700px; text-align: center;
+            color: #ccc; padding: 10px 0; height: 150px; font-size: 1rem;
+        }
+
+        /* MEDIA QUERIES (RESPONSIVE) */
+        @media (max-width: 992px) {
+            .resume-content { grid-template-columns: 1fr; } 
+            .resume-left, .resume-main-content { grid-column: 1 / -1; }
+            .about-content { grid-template-columns: 1fr; text-align: center; }
+        }
+        @media (max-width: 768px) {
+            section { padding: 6rem 1.5rem; }
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { gap: 1rem; }
+            .logo { font-size: 14px; }
+            .resume-content, .projects-grid, .certificates-grid { grid-template-columns: 1fr; }
+            .about-content { gap: 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="main-nav">
+        <div class="logo">Zidhan Tengku Wilandra</div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#projects">PROJECTS</a></li>
+            <li><a href="#certificates">CERTIFICATES</a></li>
+            <li><a href="#resume">RESUME</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="main-portfolio-sections">
+            <section id="home" class="hero">
+                <div class="hero-content">
+                    <p class="intro animate-text">HELLO, MY NAME IS</p>
+                    <h1>
+                        <span class="highlight animate-text">Zidhan Tengku</span><br>
+                        <span class="highlight animate-text">Wilandra</span>
+                    </h1>
+                    <p class="hero-tagline animate-text">Creative designer and developer passionate about creating innovative digital experiences.</p>
+                </div>
+            </section>
+
+            <section id="about" class="about fade-in">
+                <div class="section-header">
+                    <h2><span class="symbol">▷</span> About Me</h2>
+                </div>
+                <div class="about-content">
+                    <div class="profile-section">
+                        <div class="profile-image"></div>
+                    </div>
+                    <div class="about-text">
+                        <p>Hi! My name is Zidhan Tengku Wilandra and I'm a student at Telkom University. I'm passionate about design and always strive to learn new skills in creative and logical thinking. I have experience working in digital simulation projects, creating digital content and bringing creative solutions to life.</p>
+                        <p>I have experience in online creative work, working, design, and editing using various applications.</p>
+                        <a href="javascript:void(0)" onclick="showCvViewer()" class="download-btn">Download CV</a> 
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects" class="projects fade-in">
+                <div class="section-header">
+                    <h2><span class="symbol">▷</span> Projects</h2>
+                </div>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="simulation">Signal Simulation</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="content">Digital Content</button>
+                    <button class="filter-btn" data-filter="music">Music Production</button>
+                </div>
+                <div class="projects-grid" id="projects-grid">
+                    <div class="project-card" data-category="simulation" data-id="noma-sim">
+                        <div class="project-image">
+                            <img src="noma simulation.jpg" alt="NOMA Simulation Project Thumbnail">
+                        </div>
+                        <div class="project-info">
+                            <h3>NOMA Technique Simulation</h3>
+                            <div class="project-tech">MATLAB • Signal Processing</div>
+                            <p>Performance analysis of NOMA technique for 20 users using JDD and PD NOMA.</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-category="web" data-id="personal-portofolio">
+                        <div class="project-image">
+                            <img src="porto.jpg" alt="Personal Portfolio Website Thumbnail">
+                        </div>
+                        <div class="project-info">
+                            <h3>Personal Portfolio</h3>
+                            <div class="project-tech">HTML • CSS • JavaScript</div>
+                            <p>A personal portfolio website designed with modern and interactive UI/UX principles.</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-category="content" data-id="company-video">
+                        <div class="project-image">
+                            <img src="Podcast Sotoy.png" alt="Company Profile Video Thumbnail">
+                        </div>
+                        <div class="project-info">
+                            <h3>Podcast Video</h3>
+                            <div class="project-tech">CapCut • Garage Band</div>
+                            <p>Create a video podcast on YouTube by applying color grading and clear audio.</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-category="music" data-id="cinematic-score">
+                        <div class="project-image">
+                            <img src="thumbnail music.jpg" alt="Cinematic Score Thumbnail">
+                        </div>
+                        <div class="project-info">
+                            <h3>Music Production </h3>
+                            <div class="project-tech">BandLab • Garage Band • Capcut</div>
+                            <p>Make my own music starting from lyrics, production, and video clips.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="certificates" class="certificates fade-in">
+                <div class="section-header">
+                    <h2><span class="symbol">▷</span> Certificates</h2>
+                </div>
+                <div class="certificates-grid">
+                    <div class="certificate-card">
+                        <div class="certificate-image">
+                            <img src="sertif_UIpath_1.png" alt="Robot and Orchestrator for Testing - UiPath">
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Robot and Orchestrator for Testing</h4>
+                            <p>UiPath</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-image">
+                            <img src="sertif_UIpath_2.png" alt="Automation Cloud Robots  - UiPath">
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Automation Cloud Robots</h4>
+                            <p>UiPath</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-image">
+                            <img src="sertif_revou.png" alt="Intro to Digital Marketing - RevoU">
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Intro to Digital Marketing</h4>
+                            <p>RevoU</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-image">
+                            <img src="oracle_setif_1.png" alt="Oracle Fusion AI Agent Studio - Oracle University">
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Oracle Fusion AI Agent Studio</h4>
+                            <p>Oracle University</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-image">
+                            <img src="sertif_toefl.png" alt="Test of English as Foreign Language - ELSKILL ENGLISH COURSE">
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Test of English as Foreign Language</h4>
+                            <p>ELSKILL ENGLISH COURSE</p>
+                        </div>
+                    </div>
+                    <div class="certificate-card">
+                        <div class="certificate-image">
+                            <img src="sertif_oracle_2.png" alt="Generative AI Professional - Oracle University">
+                        </div>
+                        <div class="certificate-info">
+                            <h4>Generative AI Professional</h4>
+                            <p>Oracle University</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="resume" class="resume fade-in">
+                <div class="section-header">
+                    <h2><span class="symbol">▷</span> Resume</h2>
+                </div>
+                <div class="resume-content">
+                    <div class="resume-left">
+                        <div class="resume-profile-section">
+                            <h3>Zidhan Tengku</h3>
+                            <span class="resume-tag">RESUME</span>
+                        </div>
+                        <div class="contact-info">
+                            <h4><i class="fas fa-envelope"></i> E-MAIL</h4>
+                            <p>
+                                <a href="mailto:zidhantengku@gmail.com" class="contact-link">zidhantengku@gmail.com</a>
+                            </p>
+                            <h4><i class="fas fa-phone-alt"></i> PHONE</h4>
+                            <p>+6281364376243</p>
+                            <h4><i class="fab fa-linkedin"></i> LinkedIn</h4>
+                            <p>
+                                <a href="https://www.linkedin.com/in/zidhan-tengku-725359261" target="_blank" class="contact-link">zidhan tengku</a>
+                            </p>
+                        </div>
+                        <div class="skills-section-resume">
+                            <h4><i class="fas fa-globe"></i> Language</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">English</span>
+                                <span class="skill-tag">Indonesian</span>
+                            </div>
+                            <h4><i class="fas fa-magic"></i> Soft Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Communication</span>
+                                <span class="skill-tag">Problem Solving</span>
+                                <span class="skill-tag">Creative Thinking</span>
+                                <span class="skill-tag">Attention to Detail</span>
+                            </div>
+                            <h4><i class="fas fa-code"></i> Hard Skills</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Adobe</span>
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Microsoft Office</span>
+                                <span class="skill-tag">VsCode</span>
+                                <span class="skill-tag">MATLAB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-projects" style="display:none;"></div>
+
+                    <div class="resume-main-content">
+                        <div class="resume-section">
+                            <h3><i class="fas fa-user-circle"></i> Profile</h3>
+                            <p>Creative designer with a background in telecommunications engineering and passionate about digital content creation and design innovation. Ready to bring creative and logical solutions to life.</p>
+                        </div>
+                        <div class="resume-section">
+                            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                            <div class="education-item">
+                                <h4>Telkom University</h4>
+                                <p>Current - 2024</p>
+                            </div>
+                        </div>
+                        <div class="resume-section">
+                            <h3><i class="fas fa-briefcase"></i> Internship</h3>
+                            <div class="experience-item">
+                                <h4>PT. Trans Indonesia Supercorridor</h4>
+                                <p>06.2023 - 09.2023</p>
+                            </div>
+                            <div class="experience-item">
+                                <h4>PT. Telekomunikasi Seluler</h4>
+                                <p>07.2024 - 08.2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <section id="project-detail">
+            <a href="javascript:void(0)" class="back-button" onclick="showMainSections('projects')">← Back to Projects</a>
+
+            <div class="detail-header">
+                <h1 id="detail-title"></h1>
+                <p id="detail-tech"></p>
+            </div>
+
+            <div class="detail-image-container">
+                <img id="detail-image-src" src="" alt="Project Image">
+            </div>
+
+            <div class="detail-meta">
+                <span>**Category:** <span id="detail-category"></span></span>
+                <span>**Status:** <span id="detail-status">Completed</span></span>
+            </div>
+
+            <div class="detail-content" id="detail-description-content">
+                </div>
+
+            <a href="javascript:void(0)" class="back-button" onclick="showMainSections('projects')">← Back to Projects</a>
+        </section>
+
+        <section id="cv-viewer">
+            <div class="cv-actions">
+                <h2>Curriculum Vitae</h2>
+                <div>
+                    <a href="javascript:void(0)" onclick="showMainSections('about')" class="back-button-cv">← Back to About</a>
+                    <a href="CV_Zidhan_Tengku_Wilandra_ATS_Engineering.pdf" download="CV_Zidhan_Tengku_Wilandra_ATS_Engineering.pdf" class="download-btn-cv">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+            <div class="cv-iframe-container">
+                <iframe id="cv-iframe" src="CV_Zidhan_Tengku_Wilandra_ATS_Engineering.pdf" frameborder="0"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Zidhan Tengku Wilandra. All Rights Reserved.</p>
+    </footer>
+
+    <div id="certificateModal" class="modal">
+        <span class="close-button">&times;</span>
+        <img class="modal-content" id="modalCertificateImage">
+        <div id="caption" class="modal-caption"></div>
+    </div>
+
+    <script>
+        // Data lengkap Proyek dengan PATH GAMBAR LOKAL
+        const allProjects = {
+            'noma-sim': {
+                title: 'NOMA Technique Simulation',
+                tech: 'MATLAB • Signal Processing • Telecommunication Engineering',
+                category: 'Signal Simulation',
+                image: 'noma simulation.jpg', 
+                description: `
+                    <h2>Project Overview</h2>
+                    <p>This project involves performance analysis of the Non-Orthogonal Multiple Access (NOMA) technique for multi-user systems. NOMA is a key technology in 5G and beyond aimed at improving spectrum efficiency.</p>
+                    <h2>Implementation Details</h2>
+                    <p>The simulation was carried out using <strong>MATLAB</strong> to model a system with 20 users grouped based on channel conditions. Two detection schemes analyzed were Joint Detection and Decoding (JDD) and Partial Decoding (PD) NOMA.</p>
+                    <ul>
+                        <li>**Objective:** Evaluate Bit Error Rate (BER) and throughput improvements over traditional Orthogonal Multiple Access (OMA).</li>
+                        <li>**Methodology:** Model channel fading (Rayleigh/Rician), implement Successive Interference Cancellation (SIC), and analyze the power allocation strategies.</li>
+                    </ul>
+                    <h2>Results & Conclusion</h2>
+                    <p>The results show that NOMA, particularly with the JDD scheme, provides significant BER performance improvements at high user density compared to OMA. This proves NOMA's potential in enhancing massive connectivity.</p>
+                `
+            },
+            'personal-portofolio': {
+                title: 'Personal Portfolio Website',
+                tech: 'HTML • CSS • JavaScript • UI/UX Design',
+                category: 'Web Development',
+                image: 'Frame 1.jpg', 
+                description: `
+                    <h2>Project Overview</h2>
+                    <p>This personal portfolio website is designed to showcase projects, certificates, and work experience. The main focus is on modern, interactive, and responsive design.</p>
+                    <h2>Technical Stack</h2>
+                    <p>Built purely with fundamental web technologies to ensure optimal performance and full design control:</p>
+                    <ul>
+                        <li>**Frontend:** HTML5, CSS3 (Flexbox/Grid), and Vanilla JavaScript.</li>
+                        <li>**Design:** Utilizes modern UI/UX principles, featuring an elegant dark mode theme and consistent 'JetBrains Mono' typography.</li>
+                        <li>**Interactivity:** Implements dynamic project filtering and cross-page transition animations.</li>
+                    </ul>
+                    <h2>Features</h2>
+                    <p>Key features include smooth navigation, filterable project sections, and a concise resume display.</p>
+                `
+            },
+            'company-video': {
+                title: 'Podcast Video Youtube',
+                tech: 'CapCut • Garage Band • Digital Content Creation',
+                category: 'Digital Content',
+                image: 'thumbnail podcast.jpg', // PATH KOREKSI
+                description: `
+                    <h2>Project Overview</h2>
+                    <p>Creation of an engaging video podcast/company profile for YouTube publication. This project highlights proficiency in multimedia production and post-production.</p>
+                    <h2>Production Pipeline</h2>
+                    <ul>
+                        <li>**Video Editing:** Used <strong>CapCut</strong> for cut-to-cut editing, pacing adjustments, and graphics integration.</li>
+                        <li>**Color Grading:** Applied color correction and cinematic grading to establish a professional visual mood.</li>
+                        <li>**Audio Production:** Clean audio recording and editing, plus the addition of background music composed in <strong>Garage Band</strong>.</li>
+                    </ul>
+                    <h2>Skills Demonstrated</h2>
+                    <p>This project demonstrates strong visual storytelling skills, mastery of video and audio editing software, and attention to technical details like color quality and sound clarity.</p>
+                `
+            },
+            'cinematic-score': {
+                title: 'Music Production',
+                tech: 'BandLab • Garage Band • Music Production',
+                category: 'Music Production',
+                image: 'musik porot.jpg',
+                description: `
+                    <h2>Project Overview</h2>
+                    <p>Original creation of a cinematic and atmospheric music score, from lyric concept to final production and promotional video, and I uploaded to my Youtube Channel .</p>
+                    <h2>Creative Process</h2>
+                    <p>The process began with writing the lyrics and melody, followed by arrangement using the Digital Audio Workstations (DAW) **BandLab** and **Garage Band**. The main focus was on creating emotional depth and an atmosphere that supports cinematic visuals.</p>
+                    <ul>
+                        <li>Arrangement: Orchestration and sound design to create a rich soundscape.</li>
+                        <li>Mixing & Mastering: Optimizing audio quality for digital platforms.</li>
+                        <li>Visual Integration: Creation of a simple video clip synchronized with the music.</li>
+                    </ul>
+                    <h2>Impact</h2>
+                    <p>This project highlights strong creative aspects and the ability to use music production tools to generate publishable work.</p>
+                `
+            }
+        };
+
+        // --- FUNGSI UTAMA UNTUK MENGONTROL TAMPILAN HALAMAN ---
+        const mainSectionsWrapper = document.getElementById('main-portfolio-sections');
+        const projectDetailSection = document.getElementById('project-detail');
+        const cvViewerSection = document.getElementById('cv-viewer'); // NEW
+        const nav = document.getElementById('main-nav');
+        const PROJECT_TRANSITION_DURATION = 500; 
+
+        function hideAllSections() {
+            mainSectionsWrapper.style.display = 'none';
+            projectDetailSection.style.display = 'none';
+            cvViewerSection.style.display = 'none'; // NEW
+        }
+
+        window.showMainSections = function(scrollToId) {
+            const currentActiveSection = projectDetailSection.style.display === 'block' ? projectDetailSection : cvViewerSection;
+            
+            // 1. Fade Out Section Aktif saat ini
+            currentActiveSection.style.opacity = '0';
+            nav.style.pointerEvents = 'none';
+
+            // 2. Setelah Fade Out, sembunyikan dan tampilkan utama
+            setTimeout(() => {
+                hideAllSections();
+                
+                mainSectionsWrapper.style.display = 'block';
+                mainSectionsWrapper.offsetHeight; 
+                mainSectionsWrapper.style.opacity = '1';
+
+                // 3. Scroll ke bagian yang diminta ('about', 'projects', dll)
+                if (scrollToId) {
+                    const targetSection = document.getElementById(scrollToId);
+                    if (targetSection) {
+                        const navHeight = nav.offsetHeight;
+                        window.scrollTo({
+                            top: targetSection.offsetTop - navHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+
+                nav.style.pointerEvents = 'auto';
+            }, PROJECT_TRANSITION_DURATION); 
+        }
+
+        window.showProjectDetail = function(id) {
+            const projectData = allProjects[id];
+            if (!projectData) return;
+
+            document.getElementById('detail-title').innerText = projectData.title;
+            document.getElementById('detail-tech').innerText = projectData.tech;
+            document.getElementById('detail-category').innerText = projectData.category;
+            document.getElementById('detail-image-src').src = projectData.image; 
+            document.getElementById('detail-image-src').alt = projectData.title;
+            document.getElementById('detail-description-content').innerHTML = projectData.description;
+
+            // Transisi Fade Out Halaman Utama
+            mainSectionsWrapper.classList.add('fade-out');
+            nav.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                hideAllSections();
+                mainSectionsWrapper.classList.remove('fade-out');
+
+                projectDetailSection.style.display = 'block';
+                window.scrollTo(0, 0); 
+                projectDetailSection.offsetHeight; 
+                projectDetailSection.style.opacity = '1';
+                
+                nav.style.pointerEvents = 'auto';
+            }, PROJECT_TRANSITION_DURATION); 
+        }
+        
+        // NEW: FUNGSI UNTUK MENAMPILKAN CV VIEWER
+        window.showCvViewer = function() {
+            // Transisi Fade Out Halaman Utama
+            mainSectionsWrapper.classList.add('fade-out');
+            nav.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                hideAllSections();
+                mainSectionsWrapper.classList.remove('fade-out');
+
+                cvViewerSection.style.display = 'block';
+                window.scrollTo(0, 0); 
+                cvViewerSection.offsetHeight; 
+                cvViewerSection.style.opacity = '1';
+                
+                nav.style.pointerEvents = 'auto';
+            }, PROJECT_TRANSITION_DURATION); 
+        }
+
+        // Fungsi download CV lama dipertahankan untuk tombol download di CV Viewer
+        function downloadCV() {
+            // Fungsi ini hanya akan dipanggil oleh tombol di CV Viewer.
+            const link = document.createElement('a');
+            link.href = 'CV_Zidhan_Tengku_Wilandra_ATS_Engineering.pdf'; 
+            link.download = 'CV_Zidhan_Tengku_Wilandra_ATS_Engineering.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+        
+        // --- LOGIKA UTAMA DOMContentLoaded ---
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mengganti onclick lama di tombol Download CV
+            const oldDownloadButton = document.querySelector('.about-text .download-btn');
+            if (oldDownloadButton) {
+                // oldDownloadButton.onclick sudah diubah di HTML menjadi showCvViewer()
+            }
+            
+            // 1. Logika Filter Project (TETAP)
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+            if (filterButtons.length > 0 && projectCards.length > 0) {
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+
+                        const filterValue = button.getAttribute('data-filter');
+
+                        projectCards.forEach(card => {
+                            const cardCategory = card.getAttribute('data-category');
+                            const shouldShow = filterValue === 'all' || filterValue === cardCategory;
+
+                            if (shouldShow) {
+                                card.classList.remove('hide');
+                                card.style.display = 'flex';
+                            } else {
+                                card.classList.add('hide');
+                                card.addEventListener('transitionend', function handler() {
+                                    if(card.classList.contains('hide')) {
+                                        card.style.display = 'none';
+                                    }
+                                    card.removeEventListener('transitionend', handler);
+                                }, { once: true });
+                            }
+                        });
+                    });
+                });
+            }
+            
+            // 2. Event Listener untuk Project Card (MEMANGGIL FUNGSI DETAIL)
+            const projectsGrid = document.getElementById('projects-grid');
+            if (projectsGrid) {
+                projectsGrid.addEventListener('click', (event) => {
+                    const card = event.target.closest('.project-card');
+                    if (card && card.hasAttribute('data-id')) {
+                        const projectId = card.getAttribute('data-id');
+                        window.showProjectDetail(projectId);
+                    }
+                });
+            }
+
+            // 3. Logika Navigasi Aktif & Fade-in on Scroll (TETAP)
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+
+            const activateNavOnScroll = () => {
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (mainSectionsWrapper.style.display !== 'none' && pageYOffset >= sectionTop - 150) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', activateNavOnScroll);
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // 4. Logika Modal Sertifikat (TETAP)
+            const certificateImages = document.querySelectorAll('.certificate-card img');
+            const modal = document.getElementById('certificateModal');
+            const modalImage = document.getElementById('modalCertificateImage');
+            const captionText = document.getElementById('caption');
+            const closeButton = document.querySelector('.close-button');
+
+            certificateImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    modal.classList.add('open');
+                    modalImage.src = this.src;
+                    captionText.innerHTML = this.alt;
+                    document.body.style.overflow = 'hidden'; 
+                });
+            });
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = 'auto'; 
+            }
+
+            closeButton.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) { 
+                    closeModal();
+                }
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape" && modal.classList.contains('open')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
