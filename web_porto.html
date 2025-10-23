@@ -36,7 +36,8 @@
 
         nav {
             position: fixed; top: 0; left: 0; width: 100%;
-            padding: 1.5rem 4rem; z-index: 1000; display: flex;
+            padding: 1.5rem 4rem; 
+            z-index: 1000; display: flex;
             justify-content: space-between; align-items: center;
             background: rgba(13, 17, 23, 0.7);
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -56,13 +57,17 @@
             font-weight: 600; /* Link navigasi lebih tebal */
         }
         .nav-links a:hover, .nav-links a.active { color: #4A90E2; }
-        section { padding: 8rem 4rem; }
+        
+        section { 
+            padding: 8rem 4rem; /* Padding standar desktop */
+        }
+        
         .section-header { text-align: center; margin-bottom: 5rem; }
         .section-header h2 {
             font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 400;
             color: #888; display: inline-block;
             border-bottom: 2px solid #4A90E2; padding-bottom: 0.5rem;
-            font-family: 'Roboto Slab', serif; /* Font untuk Header Section */
+            font-family: 'Roboto Slab', serif; 
         }
         .section-header h2 .symbol { color: #4A90E2; font-weight: 600; }
         
@@ -70,20 +75,20 @@
         .hero {
             min-height: 100vh; 
             display: flex; 
-            flex-direction: column; /* Ubah arah flex menjadi kolom */
-            align-items: center; /* Pusatkan secara horizontal */
-            justify-content: center; /* Pusatkan secara vertikal */
-            text-align: center; /* Teks di dalam hero-content akan berpusat */
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
             position: relative; 
-            padding: 0; /* Reset padding */
+            padding: 0; 
             /* Background gradasi baru untuk section hero */
-            background-color: #0d1117; /* Warna dasar */
+            background-color: #0d1117; 
             background-image: 
                 radial-gradient(at 20% 70%, hsla(210, 80%, 25%, 0.4) 0px, transparent 60%),
                 radial-gradient(at 80% 30%, hsla(240, 70%, 20%, 0.4) 0px, transparent 60%),
                 linear-gradient(to bottom right, hsla(210, 50%, 10%, 0.8), hsla(240, 40%, 10%, 0.8));
             background-attachment: fixed;
-            background-size: cover; /* Pastikan gradasi menutupi seluruh area */
+            background-size: cover; 
         }
 
         .hero-image { /* Disesuaikan untuk posisi tengah atas */
@@ -96,8 +101,7 @@
             background: url('foto_ateng(1).png') no-repeat center center; 
             background-size: cover;
             
-            /* MODIFIKASI JARAK INI */
-            margin-bottom: 1.5rem; /* DIKURANGI DARI 3REM MENJADI 1.5REM */
+            margin-bottom: 1.5rem; /* JARAK KE NAMA */
             
             flex-shrink: 0; 
         }
@@ -136,8 +140,6 @@
         .hero-tagline { 
             display: none; /* TETAP DIHILANGKAN */
         }
-        /* --- END MODIFIKASI LAYOUT HERO BARU --- */
-
 
         /* --- ANIMASI TEKS HERO (DIREKONFIGURASI UNTUK TAMPILAN BARU) --- */
         @keyframes slideUp {
@@ -152,13 +154,13 @@
         }
         
         /* Mengontrol delay untuk animasi berurutan */
-        .hero-image.animate-slide { /* Gambar muncul pertama */
+        .hero-image.animate-slide { 
             animation-delay: 0.2s;
         }
-        .hero-content .intro { /* Lalu intro */
+        .hero-content .intro { 
             animation-delay: 0.6s;
         }
-        .hero-content h1 .animate-text:nth-child(1) { /* Lalu nama */
+        .hero-content h1 .animate-text:nth-child(1) { 
             animation-delay: 0.9s;
         }
         .hero-content h1 .animate-text:nth-child(2) {
@@ -769,7 +771,7 @@
                     <div class="resume-main-content">
                         <div class="resume-section">
                             <h3><i class="fas fa-user-circle"></i> Profile</h3>
-                            <p>Creative designer with a background in telecommunications engineering and passionate about digital content creation and design innovation. Ready to bring creative and logical solutions to life.</p>
+                            <p>A dedicated Telecommunication Engineering student with a passion for creative solutions, UI/UX, and multimedia production. Leveraging technical expertise in MATLAB and signal processing alongside hands-on experience in corporate internships, I specialize in blending analytical problem-solving with compelling digital design to deliver innovative and impactful projects.</p>
                         </div>
                         <div class="resume-section">
                             <h3><i class="fas fa-graduation-cap"></i> Education</h3>
@@ -904,7 +906,7 @@
             'cinematic-score': {
                 title: 'Music Production',
                 tech: 'BandLab • Garage Band • Music Production',
-                category: 'Music Production',
+                category: 'Digital Content',
                 image: 'musik porot.jpg',
                 description: `
                     <h2>Project Overview</h2>
@@ -1156,4 +1158,3 @@
     </script>
 </body>
 </html>
-
